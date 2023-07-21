@@ -1,0 +1,153 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    #input{
+    width:420px;
+    height:30px;
+    }
+
+    input::-webkit-input-placeholder {
+    color: #B6C0A5;
+    font-style: italic;
+    background: #E0EFCA;
+    }
+
+    input:-moz-placeholder {
+    color: #B6C0A5;
+    font-style: italic;
+    background: #E0EFCA;
+    }
+
+    input:-ms-input-placeholder {
+    color: #B6C0A5;
+    font-style: italic;
+    background: #E0EFCA;
+        }
+
+        .line{
+
+justify-content:space-around;
+flex-wrap:wrap;
+display:grid;
+grid-template-columns: 190px 190px 190px 190px;
+}
+
+.line1{
+border: 2px solid black;
+height:190px;
+display:flex;
+width:190px;
+justify-content:center;
+align-items:center;
+font-size:20px;
+flex-direction:column;
+margin-bottom:50px;
+}
+.line1 a{
+text-decoration:none;
+color:orange;
+}
+.line1 img{
+margin-bottom:10px;
+}
+
+    .line2{
+    display:flex;
+    margin-left:80px;
+    }
+
+    .line2_1{
+    display:flex;
+    height:30px;
+    width:150px;
+    justify-content:center;
+align-items:center;
+    }
+    .line2_2{
+margin-left:20px;
+
+    }
+
+    .line2_3{
+    display:flex;
+    height:30px;
+    text-decoration:none;
+    justify-content:center;
+    align-items:center;
+    background-color:orange;
+    padding:0px;
+    }
+    .line2_3 a{
+    text-decoration:none;
+    color:black;
+    }
+
+    .line2_1 a{
+    text-decoration:none;
+    color:black;
+    }
+
+    .items{
+    margin-left:170px;
+    margin-top:100px;
+    }
+    .item{
+    padding: 30px 30px;
+    margin-bottom:50px;
+    display:grid;
+    background-color: #C8C8C8;
+    border-radius: 8px;
+    grid-template-columns: 190px 400px 190px;
+    width:700px;
+    }
+
+    .item a{
+    text-decoration:none;
+    color: black;
+    font-size:17px;
+
+    }
+
+
+    </style>
+</head>
+<body>
+
+<div class="line2">
+    <div align="center" class="line2_1"><h1>DNS</h1></div>
+    <div align="center" class="line2_3"><h2><a href="http://127.0.0.1:8000">Каталог</a></h2></div>
+    <div class="line2_2" >
+        <form action="" method="get">
+            <input name="s" placeholder="Искать здесь..." type="search" id="input">
+            <button type="submit">Поиск</button>
+        </form>
+    </div>
+    <div align="center" class="line2_1">Сравнить</div>
+    <div align="center" class="line2_1">Избранное</div>
+    <div align="center" class="line2_1">Корзина</div>
+    <div align="center" class="line2_1"><a href="http://127.0.0.1:8000/registration">Регистрация</a></div>
+</div>
+
+<div class="items">
+    {%if items%}
+        {% for i in items %}
+            <div class="item" align="left">
+
+                    <img src='{% static link_img1 %}' alt="изображение" width="80px" height="80px" align="left">
+                    <a class="itemE" href="{%url 'item-detail' i.slug%}">{{i.item_name}}</a>
+                    <h2>{{i.price}}</h2>
+
+            </div>
+        {% endfor %}
+    {% else %}
+    {%
+        <h1 align="center">No items</h1>
+    {% endif %}
+</div>
+</body>
+</html>
